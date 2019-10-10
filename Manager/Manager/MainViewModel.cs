@@ -47,7 +47,14 @@ namespace Manager
         {
             pages = new List<PageViewModel>();
 
-            pages.Add(new UserEnterPageViewModel());
+            var authorizationPage = new UserEnterPageViewModel();
+
+            authorizationPage.OnAccept += () =>
+            {
+                Page = 1;
+            };
+
+            pages.Add(authorizationPage);
         }
     }
 }

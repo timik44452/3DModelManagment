@@ -22,17 +22,21 @@
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="6*"/>
                     <RowDefinition/>
+                    <RowDefinition Height="23"/>
                     <RowDefinition/>
+                    <RowDefinition Height="23"/>
                     <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
 
                 <Image Grid.Row="0" Source="/Manager;component/Resources/user_pic.png"/>
-                
-                <TextBox Grid.Row="2" VerticalContentAlignment="Center" TextAlignment="Center" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                <TextBox Grid.Row="4" VerticalContentAlignment="Center" TextAlignment="Center" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+                <TextBox Grid.Row="2" VerticalContentAlignment="Center" TextAlignment="Center" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--<TextBox Grid.Row="4" VerticalContentAlignment="Center" TextAlignment="Center" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>-->
+                <PasswordBox Grid.Row="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Button Grid.Row="6" Command="{Binding Authorization}" Content="Вход"/>
             </Grid>
         </Grid>
     </Grid>
