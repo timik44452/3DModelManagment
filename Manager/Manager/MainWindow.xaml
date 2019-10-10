@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Loaded="OnLoad">
-        <UserControl Content="{Binding Path=CurrentPage}">
+        <UserControl Content="{Binding CurrentPage}">
             <UserControl.Resources>
                 <DataTemplate DataType="{x:Type pagesVM:UserEnterPageViewModel}">
                     <pages:UserEnterPage DataContext="{Binding}"/>

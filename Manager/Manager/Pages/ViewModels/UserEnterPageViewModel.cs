@@ -1,5 +1,6 @@
 ﻿using System;
 using Manager.Service;
+using Manager.Security;
 using System.Windows.Input;
 
 namespace Manager.Pages.ViewModels
@@ -8,51 +9,32 @@ namespace Manager.Pages.ViewModels
     {
         public event Action OnAccept;
 
-        public string Login
-        {
-            get => login;
-            set
-            {
-                login = value;
-                CheckAuthorization();
-            }
-        }
+        public string Login { get; set; }
 
-        public string Password
-        {
-            get => password;
-            set
-            {
-                password = value;
-                CheckAuthorization();
-            }
-        }
-
-        public ICommand Authorization
+        public ICommand AuthorizationCommand
         {
             get
             {
-                if(authorization == null)
+                if(authorizationCommand == null)
                 {
-                    authorization = new RelayCommand(
-                        CheckAuthorization);
-                        
+                    authorizationCommand = new RelayCommand(CheckAuthorization);
+                    CheckAuthorization();
                 }
 
-                return authorization;
+                return authorizationCommand;
             }
         }
 
-
-        private string login;
-        private string password;
-        private ICommand authorization;
+        private ICommand authorizationCommand;
 
         private void CheckAuthorization()
         {
-            
-            if (login == "admin" && password == "admin")
+            var userHash = UserHash.FromUserData(Login);
+
+            if (Authorization.CheckAuthorization(userHash))
+            {
                 OnAccept?.Invoke();
+            }
         }
     }
 }

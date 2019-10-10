@@ -56,6 +56,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Security\Authorization.cs" />
+    <Compile Include="Security\UserHash.cs" />
     <Compile Include="Service\RelayCommand.cs" />
     <Page Include="CustomControls\SearchBox.xaml">
       <SubType>Designer</SubType>
@@ -123,6 +125,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\user_pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebService\WebService.csproj">
+      <Project>{be83824a-4131-48a2-935a-8ab1237be01a}</Project>
+      <Name>WebService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

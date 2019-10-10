@@ -7,6 +7,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="0">
             
+        </Grid>
+        <GridSplitter Grid.Column="1" Width="3"/>
+        <Grid Grid.Column="2">
+
+        </Grid>
     </Grid>
 </UserControl>

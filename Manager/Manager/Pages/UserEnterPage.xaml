@@ -34,9 +34,8 @@
                 <Image Grid.Row="0" Source="/Manager;component/Resources/user_pic.png"/>
 
                 <TextBox Grid.Row="2" VerticalContentAlignment="Center" TextAlignment="Center" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
-                <!--<TextBox Grid.Row="4" VerticalContentAlignment="Center" TextAlignment="Center" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>-->
-                <PasswordBox Grid.Row="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                <Button Grid.Row="6" Command="{Binding Authorization}" Content="Вход"/>
+                <PasswordBox Grid.Row="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" PasswordChar="*"/>
+                <Button Grid.Row="6" Command="{Binding AuthorizationCommand}" Content="Вход"/>
             </Grid>
         </Grid>
     </Grid>

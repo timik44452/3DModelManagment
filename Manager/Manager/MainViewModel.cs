@@ -48,13 +48,12 @@ namespace Manager
             pages = new List<PageViewModel>();
 
             var authorizationPage = new UserEnterPageViewModel();
+            var workspacePage = new WorkSpaceViewModel();
 
-            authorizationPage.OnAccept += () =>
-            {
-                Page = 1;
-            };
+            authorizationPage.OnAccept += () => Page = 1;
 
             pages.Add(authorizationPage);
+            pages.Add(workspacePage);
         }
     }
 }
