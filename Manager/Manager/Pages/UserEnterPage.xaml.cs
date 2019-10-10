@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Manager
+namespace Manager.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для UserEnterPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserEnterPage : UserControl
     {
-        public MainWindow()
+        public UserEnterPage()
         {
             InitializeComponent();
-        }
-
-        private void OnLoad(object sender, RoutedEventArgs e)
-        {
-            DataContext = new MainViewModel();
         }
     }
 }

@@ -4,21 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Manager"
-        xmlns:cc="clr-namespace:Manager.CustomControls"
+        xmlns:pages="clr-namespace:Manager.Pages"
+        xmlns:pagesVM="clr-namespace:Manager.Pages.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="15*"/>
-            </Grid.RowDefinitions>
-
-            <cc:SearchBox/>
-        </Grid>
+    <Grid Loaded="OnLoad">
+        <UserControl Content="{Binding Path=CurrentPage}">
+            <UserControl.Resources>
+                <DataTemplate DataType="{x:Type pagesVM:UserEnterPageViewModel}">
+                    <pages:UserEnterPage DataContext="{Binding}"/>
+                </DataTemplate>
+            </UserControl.Resources>
+        </UserControl>
     </Grid>
 </Window>
