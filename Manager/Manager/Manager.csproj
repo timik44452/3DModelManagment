@@ -56,10 +56,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="APIManagment\API.cs" />
+    <Compile Include="APIManagment\APIManager.cs" />
+    <Compile Include="CustomControls\ModelViewLine.xaml.cs">
+      <DependentUpon>ModelViewLine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\WindowHeader.xaml.cs">
+      <DependentUpon>WindowHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs" />
     <Compile Include="Security\Authorization.cs" />
     <Compile Include="Security\UserHash.cs" />
     <Compile Include="Service\RelayCommand.cs" />
+    <Page Include="CustomControls\ModelViewLine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\SearchBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\WindowHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -127,6 +144,10 @@
     <Resource Include="Resources\user_pic.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UpdateService\UpdateService.csproj">
+      <Project>{e0d55c9c-2416-446c-9057-44bc8afde126}</Project>
+      <Name>UpdateService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebService\WebService.csproj">
       <Project>{be83824a-4131-48a2-935a-8ab1237be01a}</Project>
       <Name>WebService</Name>
