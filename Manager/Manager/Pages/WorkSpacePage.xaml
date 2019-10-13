@@ -13,12 +13,9 @@
             <RowDefinition Height="12*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <cc:WindowHeader/>
-        </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="4.5*"/>
             </Grid.ColumnDefinitions>
@@ -26,16 +23,9 @@
             <Grid Grid.Column="0">
 
             </Grid>
+            
             <GridSplitter Grid.Column="1" ShowsPreview="False" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="3"/>
-            <Grid Grid.Column="2">
-                <ItemsControl ItemsSource="{Binding Models}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <cc:ModelViewLine DataContext="{Binding}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </Grid>
+            <cc:ModelViewTable Grid.Column="2" DataContext="{Binding Models}"/>
         </Grid>
     </Grid>
 </UserControl>

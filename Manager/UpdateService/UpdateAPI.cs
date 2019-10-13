@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace UpdateService
 {
@@ -28,12 +30,12 @@ namespace UpdateService
         public static bool NeedUpdate(UpdateSource source)
         {
             Version currentVersion = GetCurrentVersion();
-            Version actialVersion = GetVersion(source);
+            Version actualVersion = GetVersion(source);
 
-            return actialVersion > currentVersion;
+            return actualVersion > currentVersion;
         }
 
-        public static void Update(UpdateSource source)
+        public static void Update(UpdateSource source, Process programm)
         {
             throw new NotImplementedException();
         }

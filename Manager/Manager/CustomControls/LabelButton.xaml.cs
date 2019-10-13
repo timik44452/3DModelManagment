@@ -16,11 +16,15 @@ using System.Windows.Shapes;
 namespace Manager.CustomControls
 {
     /// <summary>
-    /// Логика взаимодействия для WindowHeader.xaml
+    /// Логика взаимодействия для LabelButton.xaml
     /// </summary>
-    public partial class WindowHeader : UserControl
+    public partial class LabelButton : UserControl
     {
-        public WindowHeader()
+        public event EventHandler OnClick;
+
+        public string Text { get; set; }
+
+        public LabelButton()
         {
             InitializeComponent();
         }

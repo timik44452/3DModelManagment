@@ -7,17 +7,11 @@
         xmlns:pages="clr-namespace:Manager.Pages"
         xmlns:pagesVM="clr-namespace:Manager.Pages.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStyle="None">
+        AllowDrop="True"
+        Height="450" Width="800">
+
     <Grid Loaded="OnLoad">
-        <Grid.RowDefinitions>
-            <RowDefinition MinHeight="25"/>
-            <RowDefinition MinHeight="100" Height="12*"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            
-        </Grid>
-        <Grid Grid.Row="1">
-            <UserControl Content="{Binding CurrentPage}">
+        <UserControl Content="{Binding CurrentPage}">
             <UserControl.Resources>
                 <DataTemplate DataType="{x:Type pagesVM:UserEnterPageViewModel}">
                     <pages:UserEnterPage DataContext="{Binding}"/>
@@ -27,6 +21,5 @@
                 </DataTemplate>
             </UserControl.Resources>
         </UserControl>
-        </Grid>
     </Grid>
 </Window>

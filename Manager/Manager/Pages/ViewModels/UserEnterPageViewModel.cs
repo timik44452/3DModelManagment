@@ -13,19 +13,23 @@ namespace Manager.Pages.ViewModels
 
         public ICommand AuthorizationCommand
         {
-            get
-            {
-                if(authorizationCommand == null)
-                {
-                    authorizationCommand = new RelayCommand(CheckAuthorization);
-                    CheckAuthorization();
-                }
-
-                return authorizationCommand;
-            }
+            get;
+            set;
         }
 
-        private ICommand authorizationCommand;
+        public UserEnterPageViewModel()
+        {
+            AuthorizationCommand = new RelayCommand<object>(CheckAuthorization);
+            AuthorizationCommand.Execute(null);
+        }
+
+        public override void OnKeyDown(KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                CheckAuthorization();
+            }
+        }
 
         private void CheckAuthorization()
         {

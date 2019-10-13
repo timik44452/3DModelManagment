@@ -3,9 +3,9 @@ using System.Windows.Input;
 
 namespace Manager.Service
 {
-    class RelayCommand : ICommand
+    public class RelayCommand<T> : ICommand
     {
-        private Action execute;
+        private Action<T> execute;
         private Func<bool> canExecute;
 
         public event EventHandler CanExecuteChanged
@@ -14,20 +14,41 @@ namespace Manager.Service
             remove { CommandManager.RequerySuggested -= value; }
         }
 
+        public RelayCommand(Func<bool> canExecute = null)
+        {
+            RegisterCallback(execute);
+            this.canExecute = canExecute;
+        }
+
         public RelayCommand(Action execute, Func<bool> canExecute = null)
         {
-            this.execute = execute;
+            RegisterCallback(execute);
             this.canExecute = canExecute;
+        }
+
+        public void RegisterCallback(Action callback)
+        {
+            execute += x => callback?.Invoke();
+        }
+
+        public void RegisterCallback(Action<T> callback)
+        {
+            execute += callback;
         }
 
         public bool CanExecute(object parameter)
         {
-            return this.canExecute == null || this.canExecute();
+            return canExecute == null || canExecute();
+        }
+
+        public void Execute(T parameter)
+        {
+            execute?.Invoke(parameter);
         }
 
         public void Execute(object parameter)
         {
-            this.execute?.Invoke();
+            execute?.Invoke((T)parameter);
         }
     }
 }

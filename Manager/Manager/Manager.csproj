@@ -56,27 +56,55 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddModelDialog.xaml.cs">
+      <DependentUpon>AddModelDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="APIManagment\API.cs" />
     <Compile Include="APIManagment\APIManager.cs" />
+    <Compile Include="CustomControls\LabelButton.xaml.cs">
+      <DependentUpon>LabelButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ModelViewHeader.xaml.cs">
+      <DependentUpon>ModelViewHeader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\ModelViewLine.xaml.cs">
       <DependentUpon>ModelViewLine.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\WindowHeader.xaml.cs">
-      <DependentUpon>WindowHeader.xaml</DependentUpon>
+    <Compile Include="CustomControls\ModelViewTable.xaml.cs">
+      <DependentUpon>ModelViewTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\RoundedTextBox.xaml.cs">
+      <DependentUpon>RoundedTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model.cs" />
     <Compile Include="Security\Authorization.cs" />
     <Compile Include="Security\UserHash.cs" />
     <Compile Include="Service\RelayCommand.cs" />
+    <Page Include="AddModelDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\LabelButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ModelViewHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\ModelViewLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControls\SearchBox.xaml">
+    <Page Include="CustomControls\ModelViewTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControls\WindowHeader.xaml">
+    <Page Include="CustomControls\RoundedTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\SearchBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,13 +172,17 @@
     <Resource Include="Resources\user_pic.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MIddlewareAPI\MIddlewareAPI.csproj">
+      <Project>{57d3bfa2-17b1-4635-99b6-cd3e36ee55d3}</Project>
+      <Name>MIddlewareAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModelImporter\ModelImporter.csproj">
+      <Project>{142079cc-d623-4064-90aa-8757420ac016}</Project>
+      <Name>ModelImporter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UpdateService\UpdateService.csproj">
       <Project>{e0d55c9c-2416-446c-9057-44bc8afde126}</Project>
       <Name>UpdateService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebService\WebService.csproj">
-      <Project>{be83824a-4131-48a2-935a-8ab1237be01a}</Project>
-      <Name>WebService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

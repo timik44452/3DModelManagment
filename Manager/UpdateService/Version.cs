@@ -29,6 +29,15 @@ namespace UpdateService
             return $"{m0}.{m1}.{m2}.{m3}";
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Version version &&
+                   m0 == version.m0 &&
+                   m1 == version.m1 &&
+                   m2 == version.m2 &&
+                   m3 == version.m3;
+        }
+
         public static bool operator >(Version a, Version b)
         {
             if (a.m0 > b.m0)
@@ -65,14 +74,14 @@ namespace UpdateService
             return (a != b) && !(a > b);
         }
 
-        public static bool operator == (Version a, Version b)
+        public static bool operator ==(Version a, Version b)
         {
-            return 
-                a.m0 == b.m0 && 
-                a.m1 == b.m1 && 
-                a.m2 == b.m2 && 
-                a.m3 == b.m3;
+            if (a is null || b is null)
+                return a is null && b is null;
+
+            return a.Equals(b);
         }
+
 
         public static bool operator != (Version a, Version b)
         {
