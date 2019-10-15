@@ -20,12 +20,9 @@
                 <ColumnDefinition Width="4.5*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0">
-
-            </Grid>
-            
+            <Grid Grid.Column="0"/>
             <GridSplitter Grid.Column="1" ShowsPreview="False" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="3"/>
-            <cc:ModelViewTable Grid.Column="2" DataContext="{Binding Models}"/>
+            <cc:ModelViewTable Grid.Column="2"/>
         </Grid>
     </Grid>
 </UserControl>

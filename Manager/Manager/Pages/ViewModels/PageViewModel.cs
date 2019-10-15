@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using System.ComponentModel;
+using System;
 
 namespace Manager.Pages.ViewModels
 {
@@ -12,7 +13,6 @@ namespace Manager.Pages.ViewModels
         {
             
         }
-
         public virtual void OnDropDown(DragEventArgs e)
         {
 

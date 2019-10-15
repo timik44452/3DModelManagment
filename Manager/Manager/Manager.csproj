@@ -64,12 +64,6 @@
     <Compile Include="CustomControls\LabelButton.xaml.cs">
       <DependentUpon>LabelButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\ModelViewHeader.xaml.cs">
-      <DependentUpon>ModelViewHeader.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\ModelViewLine.xaml.cs">
-      <DependentUpon>ModelViewLine.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CustomControls\ModelViewTable.xaml.cs">
       <DependentUpon>ModelViewTable.xaml</DependentUpon>
     </Compile>
@@ -79,20 +73,13 @@
     <Compile Include="Model.cs" />
     <Compile Include="Security\Authorization.cs" />
     <Compile Include="Security\UserHash.cs" />
+    <Compile Include="Service\ManagerLogger.cs" />
     <Compile Include="Service\RelayCommand.cs" />
     <Page Include="AddModelDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\LabelButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomControls\ModelViewHeader.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomControls\ModelViewLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,6 +171,9 @@
       <Project>{e0d55c9c-2416-446c-9057-44bc8afde126}</Project>
       <Name>UpdateService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\upload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

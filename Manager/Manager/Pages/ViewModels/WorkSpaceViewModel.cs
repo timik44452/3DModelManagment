@@ -1,6 +1,9 @@
 ﻿using System;
+using MiddlewareAPI;
 using ModelImporter;
+using Manager.Service;
 using System.Windows;
+using System.Windows.Input;
 using System.Collections.ObjectModel;
 
 namespace Manager.Pages.ViewModels
@@ -13,8 +16,23 @@ namespace Manager.Pages.ViewModels
             set;
         }
 
+        public ICommand SelectModelCommand
+        {
+            get;
+            set;
+        }
+
+        private FileSender fileSender;
+
         public WorkSpaceViewModel()
         {
+            fileSender = new FileSender(new ManagerLogger());
+            fileSender.Connect("127.0.0.1", 67);
+
+            var selectModelCommand = new RelayCommand<Model>();
+            selectModelCommand.RegisterCallback(x => OnSelectModel(x as Model));
+            SelectModelCommand = selectModelCommand;
+
             Models = new ObservableCollection<Model>();
             Models.CollectionChanged += (sender, e) => { PropertyChange(nameof(Models)); };
 
@@ -40,8 +58,16 @@ namespace Manager.Pages.ViewModels
                     model.Date = DateTime.Now;
 
                     Models.Add(model);
+
+                    fileSender.Send(file);
                 }
             }
         }
+
+        private void OnSelectModel(Model model)
+        {
+
+        }
+
     }
 }

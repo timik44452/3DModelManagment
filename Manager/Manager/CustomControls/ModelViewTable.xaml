@@ -30,9 +30,10 @@
         <!--Name-->
         <StackPanel Grid.Column="1">
             <Label Content="Name" Height="35" VerticalContentAlignment="Center"/>
-            <ItemsControl ItemsSource="{Binding}">
+            <ItemsControl ItemsSource="{Binding Models}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
+                        <!--<Button Content="{Binding Name}" Command="{Binding SelectModelCommand}"/>-->
                         <Label Content="{Binding Name}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -43,10 +44,13 @@
         <!--State-->
         <StackPanel Grid.Column="3">
             <Label Content="State" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <ItemsControl ItemsSource="{Binding}">
+            <ItemsControl ItemsSource="{Binding Models}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding State}" HorizontalContentAlignment="Center"/>
+                        <!--<Grid Height="30">
+                            <Image Height="20" HorizontalAlignment="Center" Source="/Manager;component/Resources/upload.png"></Image>
+                        </Grid>-->
+                        <Label Content="{Binding State}" Height="30" HorizontalContentAlignment="Center"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -56,10 +60,10 @@
         <!--Type-->
         <StackPanel Grid.Column="5">
             <Label Content="Type" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <ItemsControl ItemsSource="{Binding}">
+            <ItemsControl ItemsSource="{Binding Models}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding Type}" HorizontalContentAlignment="Center"/>
+                        <Label Content="{Binding Type}" Height="30" HorizontalContentAlignment="Center"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -69,10 +73,10 @@
         <!--Date-->
         <StackPanel Grid.Column="7">
             <Label Content="Added date" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <ItemsControl ItemsSource="{Binding}">
+            <ItemsControl ItemsSource="{Binding Models}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Label Content="{Binding Date, Mode = OneWay, StringFormat='yyyy-MM-dd HH:mm:ss '}" HorizontalContentAlignment="Center"/>
+                        <Label Height="30" Content="{Binding Date, Mode = OneWay, StringFormat='yyyy-MM-dd HH:mm:ss '}" HorizontalContentAlignment="Center"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

@@ -31,13 +31,14 @@ namespace Manager
             set;
         }
 
+
         public PageViewModel CurrentPage
         {
             get;
             set;
         }
 
-
+        
         private List<PageViewModel> pages;
 
 
