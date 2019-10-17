@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Sockets;
+using ServiceAPI;
 
 namespace MiddlewareAPI
 {
@@ -21,7 +22,7 @@ namespace MiddlewareAPI
 
         public void Connect(string ip, int port)
         {
-            if(socket == null)
+            if (socket == null)
             {
                 socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
             }
@@ -30,7 +31,7 @@ namespace MiddlewareAPI
             {
                 socket.Connect(ip, port);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 logger.ErrorMessage(e.Message);
             }
@@ -38,7 +39,7 @@ namespace MiddlewareAPI
 
         public void Send(string path)
         {
-            if(!File.Exists(path))
+            if (!File.Exists(path))
             {
                 logger.ErrorMessage($"File {path} hasn't find");
                 return;

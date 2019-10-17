@@ -1,11 +1,10 @@
-﻿using System;
-using System.Management;
-using System.Management.Instrumentation;
-
-namespace Manager.APIManagment
+﻿namespace Manager.APIManagment
 {
     public static class APIManager
     {
-        
+        public static API GetAPI(string apiName)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

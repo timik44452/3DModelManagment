@@ -1,7 +1,7 @@
 ﻿using System;
-using Manager.Service;
-using Manager.Security;
 using System.Windows.Input;
+using Manager.Security;
+using Manager.Service;
 
 namespace Manager.Pages.ViewModels
 {
@@ -25,7 +25,7 @@ namespace Manager.Pages.ViewModels
 
         public override void OnKeyDown(KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 CheckAuthorization();
             }

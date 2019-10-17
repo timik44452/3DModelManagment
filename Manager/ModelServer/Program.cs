@@ -5,10 +5,10 @@ namespace ModelServer
 {
     public class Program
     {
-        static FileServer server;
-        static ConsoleLogger logger;
+        private static FileServer server;
+        private static ConsoleLogger logger;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             logger = new ConsoleLogger();
 

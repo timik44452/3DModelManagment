@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Diagnostics;
 
 namespace UpdateService
@@ -39,6 +38,5 @@ namespace UpdateService
         {
             throw new NotImplementedException();
         }
-
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
-using Manager.Service;
-using System.Windows;
-using UpdateService;
-using System.Windows.Input;
-using System.ComponentModel;
-using Manager.Pages.ViewModels;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Input;
+using Manager.Pages.ViewModels;
+using Manager.Service;
+using UpdateService;
 
 namespace Manager
 {
@@ -31,16 +31,13 @@ namespace Manager
             set;
         }
 
-
         public PageViewModel CurrentPage
         {
             get;
             set;
         }
 
-        
         private List<PageViewModel> pages;
-
 
         public MainViewModel()
         {
@@ -91,7 +88,7 @@ namespace Manager
             RelayCommand<KeyEventArgs> keyDownCommand = new RelayCommand<KeyEventArgs>();
             RelayCommand<DragEventArgs> dropDownCommand = new RelayCommand<DragEventArgs>();
 
-            foreach(PageViewModel page in pages)
+            foreach (PageViewModel page in pages)
             {
                 keyDownCommand.RegisterCallback(x => page.OnKeyDown(x as KeyEventArgs));
                 dropDownCommand.RegisterCallback(x => page.OnDropDown(x as DragEventArgs));

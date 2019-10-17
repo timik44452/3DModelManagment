@@ -1,73 +1,100 @@
-﻿using System;
-using MiddlewareAPI;
-using ModelImporter;
-using Manager.Service;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
-using System.Collections.ObjectModel;
+using Manager.Service;
+using ModelImporter;
 
 namespace Manager.Pages.ViewModels
 {
     public class WorkSpaceViewModel : PageViewModel
     {
-        public ObservableCollection<Model> Models
+        public ObservableCollection<ObjectModel> Models
+        {
+            get => models;
+        }
+
+        public ObservableCollection<IObjectSource> ObjectSources
         {
             get;
             set;
         }
 
-        public ICommand SelectModelCommand
+        public IObjectSource CurrentObjectSource
+        {
+            get => currentObjectSource;
+            set
+            {
+                currentObjectSource = value;
+
+                PropertyChange(nameof(CurrentObjectSource));
+                PropertyChange(nameof(Models));
+            }
+        }
+
+        public ICommand SelectObjectSourceCommand
         {
             get;
             set;
         }
 
-        private FileSender fileSender;
+        private IObjectSource currentObjectSource;
+        private ObservableCollection<ObjectModel> models;
 
         public WorkSpaceViewModel()
         {
-            fileSender = new FileSender(new ManagerLogger());
-            fileSender.Connect("127.0.0.1", 67);
+            ObjectSources = new ObservableCollection<IObjectSource>();
+            ObjectSources.CollectionChanged += (send, e) =>
+            {
+                PropertyChange(nameof(CurrentObjectSource));
+                PropertyChange(nameof(ObjectSources));
+            };
 
-            var selectModelCommand = new RelayCommand<Model>();
-            selectModelCommand.RegisterCallback(x => OnSelectModel(x as Model));
-            SelectModelCommand = selectModelCommand;
+            IObjectSource testServer0 = new LocalServer("Fictive server 0");
+            testServer0.OnClick.RegisterCallback(OnSelectObjectSource);
 
-            Models = new ObservableCollection<Model>();
-            Models.CollectionChanged += (sender, e) => { PropertyChange(nameof(Models)); };
+            IObjectSource testServer1 = new LocalServer("Fictive server 1");
+            testServer1.OnClick.RegisterCallback(OnSelectObjectSource);
 
-            
-            Models.Add(new Model("3D Example 0"));
-            Models.Add(new Model("Human"));
-            Models.Add(new Model("Компрессор модель 2"));
-            Models.Add(new Model("Хрен пойми что за модель"));
+            ObjectSources.Add(testServer0);
+            ObjectSources.Add(testServer1);
+
+            RelayCommand<IObjectSource> selectObjectSourceCommand = new RelayCommand<IObjectSource>();
+
+            selectObjectSourceCommand.RegisterCallback(OnSelectObjectSource);
+            SelectObjectSourceCommand = selectObjectSourceCommand;
         }
 
         public override void OnDropDown(DragEventArgs e)
         {
+            if (CurrentObjectSource == null)
+            {
+                return;
+            }
+
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
 
-            foreach(string file in files)
+            foreach (string file in files)
             {
                 if (ModelImporter.ModelImporter.IsModel(file))
                 {
-                    Model3D model3D = ModelImporter.ModelImporter.ImportModel(file, 
-                        ModelParserFactory.CreateParser(file));
+                    ObjectModel model3D = ObjectModelFactory.GetObject(ModelImporter.ModelImporter.ImportModel(file,
+                        ModelParserFactory.CreateParser(file))) as Model3D;
 
-                    Model model = new Model(model3D);
-                    model.Date = DateTime.Now;
-
-                    Models.Add(model);
-
-                    fileSender.Send(file);
+                    CurrentObjectSource.AddObject(model3D);
                 }
             }
+
+            models = new ObservableCollection<ObjectModel>(CurrentObjectSource.GetObjects());
+            PropertyChange(nameof(Models));
         }
 
-        private void OnSelectModel(Model model)
+        private void OnSelectObjectSource(IObjectSource source)
         {
-
+            if (source != null)
+            {
+                models = new ObservableCollection<ObjectModel>(source.GetObjects());
+                CurrentObjectSource = source;
+            }
         }
-
     }
 }

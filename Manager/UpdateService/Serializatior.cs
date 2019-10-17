@@ -8,7 +8,7 @@ namespace UpdateService
         public static void Serialization(string path, object target)
         {
             var serializer = new XmlSerializerFactory().CreateSerializer(target.GetType());
-            using(Stream stream = new StreamWriter(path).BaseStream)
+            using (Stream stream = new StreamWriter(path).BaseStream)
             {
                 serializer.Serialize(stream, target);
             }

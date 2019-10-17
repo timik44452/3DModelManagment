@@ -14,10 +14,10 @@
         <UserControl Content="{Binding CurrentPage}">
             <UserControl.Resources>
                 <DataTemplate DataType="{x:Type pagesVM:UserEnterPageViewModel}">
-                    <pages:UserEnterPage DataContext="{Binding}"/>
+                    <pages:UserEnterPage DataContext="{Binding}" />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type pagesVM:WorkSpaceViewModel}">
-                    <pages:WorkSpacePage DataContext="{Binding}"/>
+                    <pages:WorkSpacePage DataContext="{Binding}" />
                 </DataTemplate>
             </UserControl.Resources>
         </UserControl>

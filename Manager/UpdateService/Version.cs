@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace UpdateService
 {
     [Serializable]
@@ -82,8 +81,7 @@ namespace UpdateService
             return a.Equals(b);
         }
 
-
-        public static bool operator != (Version a, Version b)
+        public static bool operator !=(Version a, Version b)
         {
             return !(a == b);
         }

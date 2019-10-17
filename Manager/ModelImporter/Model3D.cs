@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ModelImporter
+﻿namespace ModelImporter
 {
     public class Model3D
     {

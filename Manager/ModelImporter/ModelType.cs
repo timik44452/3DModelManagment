@@ -30,7 +30,7 @@
         {
             target = null;
 
-            if(modelName.ToLower().Contains(".fbx"))
+            if (modelName.ToLower().Contains(".fbx"))
             {
                 target = Fbx;
 

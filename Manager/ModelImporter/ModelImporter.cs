@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace ModelImporter
 {
@@ -20,7 +19,6 @@ namespace ModelImporter
             }
 
             return null;
-
         }
 
         public static bool IsModel(string path)

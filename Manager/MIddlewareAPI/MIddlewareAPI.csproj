@@ -43,8 +43,13 @@
   <ItemGroup>
     <Compile Include="FileSender.cs" />
     <Compile Include="FileServer.cs" />
-    <Compile Include="ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceAPI\ServiceAPI.csproj">
+      <Project>{fb6e6dc6-756a-458f-9880-3a113075021a}</Project>
+      <Name>ServiceAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -19,7 +19,7 @@
 
         public override bool Equals(object obj)
         {
-            if(obj is UserHash)
+            if (obj is UserHash)
             {
                 return ((UserHash)obj).hash == hash;
             }

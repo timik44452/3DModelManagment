@@ -1,7 +1,6 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
-using System.ComponentModel;
-using System;
 
 namespace Manager.Pages.ViewModels
 {
@@ -11,11 +10,10 @@ namespace Manager.Pages.ViewModels
 
         public virtual void OnKeyDown(KeyEventArgs e)
         {
-            
         }
+
         public virtual void OnDropDown(DragEventArgs e)
         {
-
         }
 
         public void PropertyChange(string propertyName)

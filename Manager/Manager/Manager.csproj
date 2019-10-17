@@ -35,9 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Blend.Interactivity.Wpf.1.0.1340.0\lib\net\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -70,7 +76,13 @@
     <Compile Include="CustomControls\RoundedTextBox.xaml.cs">
       <DependentUpon>RoundedTextBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs" />
+    <Compile Include="IObjectSource.cs" />
+    <Compile Include="LocalServer.cs" />
+    <Compile Include="Objects\Model3D.cs" />
+    <Compile Include="Objects\Model3DFBX.cs" />
+    <Compile Include="Objects\ObjectModel.cs" />
+    <Compile Include="Objects\ObjectModelFactory.cs" />
+    <Compile Include="Objects\ObjectType.cs" />
     <Compile Include="Security\Authorization.cs" />
     <Compile Include="Security\UserHash.cs" />
     <Compile Include="Service\ManagerLogger.cs" />
@@ -119,6 +131,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\ButtonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\UserEnterPage.xaml.cs">
@@ -147,6 +163,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -159,13 +176,17 @@
     <Resource Include="Resources\user_pic.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MIddlewareAPI\MIddlewareAPI.csproj">
+    <ProjectReference Include="..\MIddlewareAPI\MiddlewareAPI.csproj">
       <Project>{57d3bfa2-17b1-4635-99b6-cd3e36ee55d3}</Project>
-      <Name>MIddlewareAPI</Name>
+      <Name>MiddlewareAPI</Name>
     </ProjectReference>
     <ProjectReference Include="..\ModelImporter\ModelImporter.csproj">
       <Project>{142079cc-d623-4064-90aa-8757420ac016}</Project>
       <Name>ModelImporter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceAPI\ServiceAPI.csproj">
+      <Project>{fb6e6dc6-756a-458f-9880-3a113075021a}</Project>
+      <Name>ServiceAPI</Name>
     </ProjectReference>
     <ProjectReference Include="..\UpdateService\UpdateService.csproj">
       <Project>{e0d55c9c-2416-446c-9057-44bc8afde126}</Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using ServiceAPI;
 
 namespace MiddlewareAPI
 {
@@ -38,7 +39,6 @@ namespace MiddlewareAPI
 
                 logger.LogMessage($"Server was started successful");
 
-
                 while (isWork)
                 {
                     Socket handler = socket.Accept();
@@ -70,7 +70,7 @@ namespace MiddlewareAPI
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 logger.ErrorMessage(e.Message);
             }
