@@ -1,4 +1,5 @@
 ﻿using System;
+using ServiceAPI;
 
 namespace ModelServer
 {

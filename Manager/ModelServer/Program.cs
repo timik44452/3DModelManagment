@@ -1,12 +1,13 @@
 ﻿using System;
+using ServiceAPI;
 using MiddlewareAPI;
 
 namespace ModelServer
 {
     public class Program
     {
-        private static FileServer server;
-        private static ConsoleLogger logger;
+        private static FileStreamer server;
+        private static ILogger logger;
 
         private static void Main(string[] args)
         {
@@ -14,8 +15,8 @@ namespace ModelServer
 
             try
             {
-                server = new FileServer(67, logger);
-                server.Start();
+                server = new FileStreamer(logger);
+                server.StartServer(67);
             }
             catch (Exception e)
             {

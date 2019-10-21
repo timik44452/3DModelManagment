@@ -14,7 +14,7 @@
             <Setter Property="Width" Value="1" />
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="#FFF0F0F0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25" />
             <ColumnDefinition Width="2*" />

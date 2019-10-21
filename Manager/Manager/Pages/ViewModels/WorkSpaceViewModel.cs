@@ -26,12 +26,23 @@ namespace Manager.Pages.ViewModels
             {
                 currentObjectSource = value;
 
+                if (value != null)
+                {
+                    models = new ObservableCollection<ObjectModel>(value.GetObjects());
+                }
+
                 PropertyChange(nameof(CurrentObjectSource));
                 PropertyChange(nameof(Models));
             }
         }
 
         public ICommand SelectObjectSourceCommand
+        {
+            get;
+            set;
+        }
+
+        public ICommand AddDataSourceCommand
         {
             get;
             set;
@@ -49,19 +60,20 @@ namespace Manager.Pages.ViewModels
                 PropertyChange(nameof(ObjectSources));
             };
 
-            IObjectSource testServer0 = new LocalServer("Fictive server 0");
-            testServer0.OnClick.RegisterCallback(OnSelectObjectSource);
-
-            IObjectSource testServer1 = new LocalServer("Fictive server 1");
-            testServer1.OnClick.RegisterCallback(OnSelectObjectSource);
-
-            ObjectSources.Add(testServer0);
-            ObjectSources.Add(testServer1);
-
+            RelayCommand<object> addDataSourceCommand = new RelayCommand<object>();
             RelayCommand<IObjectSource> selectObjectSourceCommand = new RelayCommand<IObjectSource>();
 
+            addDataSourceCommand.RegisterCallback(AddDataSource);
             selectObjectSourceCommand.RegisterCallback(OnSelectObjectSource);
+
+            AddDataSourceCommand = addDataSourceCommand;
             SelectObjectSourceCommand = selectObjectSourceCommand;
+
+            IObjectSource testServer0 = new LocalServer("Fictive server 0");
+
+            ObjectSources.Add(testServer0);
+
+            SelectObjectSourceCommand.Execute(testServer0);
         }
 
         public override void OnDropDown(DragEventArgs e)
@@ -88,12 +100,24 @@ namespace Manager.Pages.ViewModels
             PropertyChange(nameof(Models));
         }
 
+        private void AddDataSource()
+        {
+
+        }
+
         private void OnSelectObjectSource(IObjectSource source)
         {
+            if(currentObjectSource != null)
+            {
+                currentObjectSource.IsSelected = false;
+            }
             if (source != null)
             {
-                models = new ObservableCollection<ObjectModel>(source.GetObjects());
+                source.IsSelected = true;
+
                 CurrentObjectSource = source;
+
+                PropertyChange(nameof(ObjectSources));
             }
         }
     }

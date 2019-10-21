@@ -67,11 +67,17 @@
     </Compile>
     <Compile Include="APIManagment\API.cs" />
     <Compile Include="APIManagment\APIManager.cs" />
+    <Compile Include="CustomControls\AddDataSourceDialog.xaml.cs">
+      <DependentUpon>AddDataSourceDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\LabelButton.xaml.cs">
       <DependentUpon>LabelButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\ModelViewTable.xaml.cs">
       <DependentUpon>ModelViewTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ObjectSourceControl.xaml.cs">
+      <DependentUpon>ObjectSourceControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\RoundedTextBox.xaml.cs">
       <DependentUpon>RoundedTextBox.xaml</DependentUpon>
@@ -83,6 +89,7 @@
     <Compile Include="Objects\ObjectModel.cs" />
     <Compile Include="Objects\ObjectModelFactory.cs" />
     <Compile Include="Objects\ObjectType.cs" />
+    <Compile Include="ObjectToBrushConverter.cs" />
     <Compile Include="Security\Authorization.cs" />
     <Compile Include="Security\UserHash.cs" />
     <Compile Include="Service\ManagerLogger.cs" />
@@ -91,11 +98,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomControls\AddDataSourceDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\LabelButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\ModelViewTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ObjectSourceControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

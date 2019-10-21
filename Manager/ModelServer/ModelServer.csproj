@@ -55,6 +55,10 @@
       <Project>{57d3bfa2-17b1-4635-99b6-cd3e36ee55d3}</Project>
       <Name>MiddlewareAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ServiceAPI\ServiceAPI.csproj">
+      <Project>{fb6e6dc6-756a-458f-9880-3a113075021a}</Project>
+      <Name>ServiceAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,6 +4,7 @@
     {
         public static void RegisterNewAction(TimerTask task)
         {
+            throw new System.NotImplementedException();
         }
     }
 }

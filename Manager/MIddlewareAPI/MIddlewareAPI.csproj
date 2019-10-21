@@ -7,7 +7,7 @@
     <ProjectGuid>{57D3BFA2-17B1-4635-99B6-CD3E36EE55D3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MIddlewareAPI</RootNamespace>
+    <RootNamespace>MiddlewareAPI</RootNamespace>
     <AssemblyName>MIddlewareAPI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileSender.cs" />
-    <Compile Include="FileServer.cs" />
+    <Compile Include="FileStreamer.cs" />
+    <Compile Include="PackageHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
