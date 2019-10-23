@@ -17,7 +17,7 @@
                 {
                     Date = System.DateTime.Now,
                     Name = model3D.Name,
-                    State = ModelState.Free,
+                    State = ModelState.Uploading,
                     Type = new Model3DFBX()
                 };
             }

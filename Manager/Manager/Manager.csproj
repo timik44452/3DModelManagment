@@ -62,6 +62,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddDatasourceDialog.xaml.cs">
+      <DependentUpon>AddDatasourceDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddModelDialog.xaml.cs">
       <DependentUpon>AddModelDialog.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,10 @@
     <Compile Include="Security\UserHash.cs" />
     <Compile Include="Service\ManagerLogger.cs" />
     <Compile Include="Service\RelayCommand.cs" />
+    <Page Include="AddDatasourceDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddModelDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,7 +219,13 @@
     <Resource Include="Resources\upload.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\server.png" />
+    <Resource Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\connectedServer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\disconnectedServer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

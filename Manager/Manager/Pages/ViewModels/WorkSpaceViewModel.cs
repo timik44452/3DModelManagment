@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using Manager.Service;
 using ModelImporter;
+using System.Linq;
 
 namespace Manager.Pages.ViewModels
 {
@@ -10,33 +11,21 @@ namespace Manager.Pages.ViewModels
     {
         public ObservableCollection<ObjectModel> Models
         {
-            get => models;
-        }
-
-        public ObservableCollection<IObjectSource> ObjectSources
-        {
-            get;
-            set;
-        }
-
-        public IObjectSource CurrentObjectSource
-        {
-            get => currentObjectSource;
-            set
+            get
             {
-                currentObjectSource = value;
+                ObservableCollection<ObjectModel> models = new ObservableCollection<ObjectModel>();
 
-                if (value != null)
-                {
-                    models = new ObservableCollection<ObjectModel>(value.GetObjects());
-                }
+                foreach(IObjectSource objectSource in ObjectSources)
+                    foreach(ObjectModel model in objectSource.GetObjects())
+                    {
+                        models.Add(model);
+                    }
 
-                PropertyChange(nameof(CurrentObjectSource));
-                PropertyChange(nameof(Models));
+                return models;
             }
         }
 
-        public ICommand SelectObjectSourceCommand
+        public ObservableCollection<IObjectSource> ObjectSources
         {
             get;
             set;
@@ -48,76 +37,45 @@ namespace Manager.Pages.ViewModels
             set;
         }
 
-        private IObjectSource currentObjectSource;
-        private ObservableCollection<ObjectModel> models;
 
         public WorkSpaceViewModel()
         {
             ObjectSources = new ObservableCollection<IObjectSource>();
             ObjectSources.CollectionChanged += (send, e) =>
             {
-                PropertyChange(nameof(CurrentObjectSource));
                 PropertyChange(nameof(ObjectSources));
+                PropertyChange(nameof(Models));
             };
 
             RelayCommand<object> addDataSourceCommand = new RelayCommand<object>();
             RelayCommand<IObjectSource> selectObjectSourceCommand = new RelayCommand<IObjectSource>();
 
             addDataSourceCommand.RegisterCallback(AddDataSource);
-            selectObjectSourceCommand.RegisterCallback(OnSelectObjectSource);
 
             AddDataSourceCommand = addDataSourceCommand;
-            SelectObjectSourceCommand = selectObjectSourceCommand;
 
-            IObjectSource testServer0 = new LocalServer("Fictive server 0");
-
+            IObjectSource testServer0 = new LocalServer("Fictive server 0", "127.0.0.1:67", null);
             ObjectSources.Add(testServer0);
-
-            SelectObjectSourceCommand.Execute(testServer0);
         }
 
         public override void OnDropDown(DragEventArgs e)
         {
-            if (CurrentObjectSource == null)
-            {
-                return;
-            }
-
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
 
-            foreach (string file in files)
-            {
-                if (ModelImporter.ModelImporter.IsModel(file))
-                {
-                    ObjectModel model3D = ObjectModelFactory.GetObject(ModelImporter.ModelImporter.ImportModel(file,
-                        ModelParserFactory.CreateParser(file))) as Model3D;
 
-                    CurrentObjectSource.AddObject(model3D);
-                }
-            }
+            AddModelDialog modelDialog = new AddModelDialog(ObjectSources, files);
+            modelDialog.ShowDialog();
 
-            models = new ObservableCollection<ObjectModel>(CurrentObjectSource.GetObjects());
             PropertyChange(nameof(Models));
         }
 
         private void AddDataSource()
         {
-
-        }
-
-        private void OnSelectObjectSource(IObjectSource source)
-        {
-            if(currentObjectSource != null)
+            AddDatasourceDialog datasourceDialog = new AddDatasourceDialog(null);
+            
+            if(datasourceDialog.ShowDialog() == true)
             {
-                currentObjectSource.IsSelected = false;
-            }
-            if (source != null)
-            {
-                source.IsSelected = true;
-
-                CurrentObjectSource = source;
-
-                PropertyChange(nameof(ObjectSources));
+                ObjectSources.Add(datasourceDialog.Source);
             }
         }
     }
