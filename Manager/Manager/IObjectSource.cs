@@ -6,13 +6,11 @@ namespace Manager
 {
     public interface IObjectSource
     {
-        event Action<string> OnPropertyChange;
-
         string Name { get; set; }
 
-        bool IsAvailable { get; }
+        string Source { get; set; }
 
-        bool IsSelected { get; set; }
+        bool IsAvailable { get; }
 
         List<ObjectModel> GetObjects();
 

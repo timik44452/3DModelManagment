@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 
-namespace UpdateService
+namespace ServiceAPI
 {
     public static class Serializatior
     {

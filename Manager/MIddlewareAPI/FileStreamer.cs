@@ -36,6 +36,7 @@ namespace MiddlewareAPI
         public FileStreamer(ILogger logger)
         {
             this.logger = logger;
+            socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
         }
 
         public void Connect(string ip, int port)
@@ -52,7 +53,7 @@ namespace MiddlewareAPI
             }
             catch (Exception e)
             {
-                logger.ErrorMessage(e.Message);
+                logger?.ErrorMessage(e.Message);
             }
         }
 
@@ -96,14 +97,22 @@ namespace MiddlewareAPI
                     logger.LogMessage($"Recieved {allRecieved} bytes");
                     logger.LogMessage($"Recieved {allRecieved / 1024 / 1024} Mb");
                 }
-
-                //socket.Shutdown(SocketShutdown.Both);
-                //socket.Close();
             }
             catch (Exception e)
             {
                 logger.ErrorMessage(e.Message);
             }
+        }
+
+        public void Close()
+        {
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Close();
+        }
+
+        public PackageHeader[] GetFiles()
+        {
+            return new PackageHeader[0];
         }
 
         public void Send(string path)

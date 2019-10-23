@@ -1,4 +1,5 @@
 ﻿using System;
+using ServiceAPI;
 using System.Diagnostics;
 
 namespace UpdateService

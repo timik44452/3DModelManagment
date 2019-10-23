@@ -21,7 +21,16 @@ namespace ModelServer
             catch (Exception e)
             {
                 logger.ErrorMessage(e.Message);
+                WaitKey();
             }
+
+            WaitKey();
+        }
+
+        private static void WaitKey()
+        {
+            Console.WriteLine("Press any key...");
+            Console.ReadKey();
         }
     }
 }
