@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ServiceAPI;
 using System.Windows;
-using ServiceAPI;
+using Manager.Objects;
 
 namespace Manager
 {

@@ -1,22 +1,22 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Input;
+﻿using System.Windows;
 using Manager.Service;
-using ModelImporter;
-using System.Linq;
+using Manager.Objects;
+using System.Windows.Input;
+using System.Collections.ObjectModel;
+
 
 namespace Manager.Pages.ViewModels
 {
     public class WorkSpaceViewModel : PageViewModel
     {
-        public ObservableCollection<ObjectModel> Models
+        public ObservableCollection<IObjectModel> Models
         {
             get
             {
-                ObservableCollection<ObjectModel> models = new ObservableCollection<ObjectModel>();
+                ObservableCollection<IObjectModel> models = new ObservableCollection<IObjectModel>();
 
-                foreach(IObjectSource objectSource in ObjectSources)
-                    foreach(ObjectModel model in objectSource.GetObjects())
+                foreach (IObjectSource objectSource in ObjectSources)
+                    foreach (IObjectModel model in objectSource.GetObjects())
                     {
                         models.Add(model);
                     }
@@ -36,7 +36,6 @@ namespace Manager.Pages.ViewModels
             get;
             set;
         }
-
 
         public WorkSpaceViewModel()
         {
@@ -62,7 +61,6 @@ namespace Manager.Pages.ViewModels
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
 
-
             AddModelDialog modelDialog = new AddModelDialog(ObjectSources, files);
             modelDialog.ShowDialog();
 
@@ -72,8 +70,8 @@ namespace Manager.Pages.ViewModels
         private void AddDataSource()
         {
             AddDatasourceDialog datasourceDialog = new AddDatasourceDialog(null);
-            
-            if(datasourceDialog.ShowDialog() == true)
+
+            if (datasourceDialog.ShowDialog() == true)
             {
                 ObjectSources.Add(datasourceDialog.Source);
             }

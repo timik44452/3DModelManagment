@@ -8,10 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="25" d:DesignWidth="300">
 
-    <UserControl.Resources>
-        <core:ObjectToBrushConverter x:Key="ObjectToBrushConverter"/>
-    </UserControl.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>

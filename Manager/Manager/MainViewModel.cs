@@ -13,12 +13,6 @@ namespace Manager
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Title
-        {
-            get;
-            set;
-        }
-
         public ICommand KeyDownCommand
         {
             get;
@@ -41,7 +35,6 @@ namespace Manager
 
         public MainViewModel()
         {
-            Title = $"3D Managet v{UpdateAPI.GetCurrentVersion()}";
             InitPages();
             InitCommands();
         }

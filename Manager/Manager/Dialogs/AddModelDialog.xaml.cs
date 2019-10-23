@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Manager.Objects;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 

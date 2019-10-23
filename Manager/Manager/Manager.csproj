@@ -62,10 +62,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddDatasourceDialog.xaml.cs">
+    <Compile Include="Dialogs\AddDatasourceDialog.xaml.cs">
       <DependentUpon>AddDatasourceDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddModelDialog.xaml.cs">
+    <Compile Include="Dialogs\AddModelDialog.xaml.cs">
       <DependentUpon>AddModelDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="APIManagment\API.cs" />
@@ -85,23 +85,23 @@
     <Compile Include="CustomControls\RoundedTextBox.xaml.cs">
       <DependentUpon>RoundedTextBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IObjectSource.cs" />
-    <Compile Include="LocalServer.cs" />
+    <Compile Include="Objects\IObjectModel.cs" />
+    <Compile Include="Objects\IObjectSource.cs" />
+    <Compile Include="Objects\LocalServer.cs" />
     <Compile Include="Objects\Model3D.cs" />
-    <Compile Include="Objects\Model3DFBX.cs" />
-    <Compile Include="Objects\ObjectModel.cs" />
+    <Compile Include="Objects\ObjectHistory.cs" />
     <Compile Include="Objects\ObjectModelFactory.cs" />
+    <Compile Include="Objects\ObjectState.cs" />
     <Compile Include="Objects\ObjectType.cs" />
-    <Compile Include="ObjectToBrushConverter.cs" />
     <Compile Include="Security\Authorization.cs" />
     <Compile Include="Security\UserHash.cs" />
     <Compile Include="Service\ManagerLogger.cs" />
     <Compile Include="Service\RelayCommand.cs" />
-    <Page Include="AddDatasourceDialog.xaml">
+    <Page Include="Dialogs\AddDatasourceDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddModelDialog.xaml">
+    <Page Include="Dialogs\AddModelDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -72,11 +72,11 @@
 
         <!--Date-->
         <StackPanel Grid.Column="7">
-            <Label Content="Added date" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Content="Last changes" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             <ItemsControl ItemsSource="{Binding Models}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Label Height="30" Content="{Binding Date, Mode = OneWay, StringFormat='yyyy-MM-dd HH:mm:ss '}" HorizontalContentAlignment="Center" />
+                        <Label Height="30" Content="{Binding Hystory.LastChangesDate, Mode = OneWay, StringFormat='yyyy-MM-dd HH:mm:ss '}" HorizontalContentAlignment="Center" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

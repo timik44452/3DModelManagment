@@ -1,8 +1,8 @@
-﻿namespace Manager
+﻿namespace Manager.Objects
 {
     public static class ObjectModelFactory
     {
-        public static ObjectModel GetObject(object value)
+        public static IObjectModel GetObject(object value)
         {
             if (value == null)
             {
@@ -15,10 +15,9 @@
 
                 return new Model3D()
                 {
-                    Date = System.DateTime.Now,
                     Name = model3D.Name,
-                    State = ModelState.Uploading,
-                    Type = new Model3DFBX()
+                    Type = ObjectType.FBX,
+                    State = ObjectState.Uploaded,
                 };
             }
 

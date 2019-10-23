@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using Manager.Objects;
 using MiddlewareAPI;
 using ServiceAPI;
-using System.ComponentModel;
 
 namespace Manager
 {
@@ -19,10 +19,12 @@ namespace Manager
                 PropertyChangedInvoke(nameof(Name));
             }
         }
+
         public bool IsAvailable
         {
             get => fileSender != null && fileSender.IsConnected;
         }
+
         public string Source
         {
             get => source;
@@ -32,6 +34,7 @@ namespace Manager
                 PropertyChangedInvoke(nameof(Name));
             }
         }
+
         public string ItemIcon
         {
             get => itemIcon;
@@ -45,32 +48,33 @@ namespace Manager
             }
         }
 
+        private const string DISCONNECTED_SERVER_ICON = "/Manager;component/Resources/disconnectedServer.png";
+        private const string CONNECTED_SERVER_ICON = "/Manager;component/Resources/connectedServer.png";
 
         private string name;
         private string source;
         private string itemIcon;
 
         private FileStreamer fileSender;
-        private List<ObjectModel> objects = new List<ObjectModel>();
-
+        private List<IObjectModel> objects = new List<IObjectModel>();
 
         public LocalServer(string name, string source, ILogger logger)
         {
             this.name = name;
             this.source = source;
 
-            ItemIcon = "/Manager;component/Resources/disconnectedServer.png";
+            ItemIcon = DISCONNECTED_SERVER_ICON;
             fileSender = new FileStreamer(logger);
 
-            Timer.RegisterNewAction(new TimerTask(1500, CheckConnection, loop:true));
+            Timer.RegisterNewAction(new TimerTask(1500, CheckConnection, loop: true));
         }
 
-        public void AddObject(ObjectModel objectModel)
+        public void AddObject(IObjectModel objectModel)
         {
             objects.Add(objectModel);
         }
 
-        public List<ObjectModel> GetObjects()
+        public List<IObjectModel> GetObjects()
         {
             return objects;
         }
@@ -80,9 +84,10 @@ namespace Manager
             PropertyChangedEventArgs eventArgs = new PropertyChangedEventArgs(propertyName);
             PropertyChanged?.Invoke(this, eventArgs);
         }
+
         private void CheckConnection()
         {
-            if(fileSender == null)
+            if (fileSender == null)
             {
                 return;
             }
@@ -97,14 +102,7 @@ namespace Manager
                 }
             }
 
-            if (!IsAvailable)
-            {
-                ItemIcon = "/Manager;component/Resources/disconnectedServer.png";
-            }
-            else
-            {
-                ItemIcon = "/Manager;component/Resources/connectedServer.png";
-            }
+            ItemIcon = IsAvailable ? CONNECTED_SERVER_ICON : DISCONNECTED_SERVER_ICON;
         }
     }
 }
