@@ -2,6 +2,7 @@
 using Manager.Objects;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Manager.Dialogs;
 
 namespace Manager
 {
@@ -10,27 +11,31 @@ namespace Manager
     /// </summary>
     public partial class AddModelDialog : Window
     {
-        private List<string> Files;
-        private List<IObjectSource> ObjectSources;
+        private AddDatasourceViewModel viewModel;
 
         public AddModelDialog(ObservableCollection<IObjectSource> objectSources, string[] files)
         {
             InitializeComponent();
 
-            Files = new List<string>(files);
-            ObjectSources = new List<IObjectSource>(objectSources);
+            viewModel = new AddDatasourceViewModel(objectSources, files);
+            DataContext = viewModel;
         }
 
-        public void Accept()
+        private void Accept(object sender, RoutedEventArgs e)
         {
-            foreach (string file in Files)
+            foreach(var item in viewModel.SourceItems)
             {
-                //if (ModelImporter.ModelImporter.IsModel(file))
-                //{
-                //    ObjectModel model3D = ObjectModelFactory.GetObject(ModelImporter.ModelImporter.ImportModel(file,
-                //        ModelParserFactory.CreateParser(file))) as Model3D;
-                //}
+                item.CurrentSource.AddObject(ObjectModelFactory.GetObject(item.Path));
             }
+
+            DialogResult = true;
+            Close();
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
         }
     }
 }

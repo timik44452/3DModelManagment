@@ -28,7 +28,7 @@
             </Grid.ColumnDefinitions>
 
             <Image Grid.Column="0" Source="{Binding ItemIcon}"/>
-            <Viewbox Grid.Column="2" HorizontalAlignment="Left">
+            <Viewbox Grid.Column="2">
                 <TextBlock Text="{Binding Name}"/>
             </Viewbox>
         </Grid>

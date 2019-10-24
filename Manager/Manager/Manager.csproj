@@ -65,14 +65,12 @@
     <Compile Include="Dialogs\AddDatasourceDialog.xaml.cs">
       <DependentUpon>AddDatasourceDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\AddDatasourceViewModel.cs" />
     <Compile Include="Dialogs\AddModelDialog.xaml.cs">
       <DependentUpon>AddModelDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="APIManagment\API.cs" />
     <Compile Include="APIManagment\APIManager.cs" />
-    <Compile Include="CustomControls\AddDataSourceDialog.xaml.cs">
-      <DependentUpon>AddDataSourceDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CustomControls\LabelButton.xaml.cs">
       <DependentUpon>LabelButton.xaml</DependentUpon>
     </Compile>
@@ -85,6 +83,7 @@
     <Compile Include="CustomControls\RoundedTextBox.xaml.cs">
       <DependentUpon>RoundedTextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\ObjectSourceItem.cs" />
     <Compile Include="Objects\IObjectModel.cs" />
     <Compile Include="Objects\IObjectSource.cs" />
     <Compile Include="Objects\LocalServer.cs" />
@@ -102,10 +101,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\AddModelDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomControls\AddDataSourceDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

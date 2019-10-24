@@ -2,23 +2,23 @@
 
 namespace ModelImporter
 {
-    public static class ModelImporter
+    public static class ModelImport
     {
-        public static Model3D ImportModel(string path, IModelParser parser)
+        public static void ImportModel(string path, out Model3D model3D, IModelParser parser)
         {
+            model3D = null;
+
             if (IsModel(path))
             {
                 var modelName = Path.GetFileNameWithoutExtension(path);
                 var modelType = ModelType.Parse(path);
 
-                return new Model3D()
+                model3D = new Model3D()
                 {
                     Name = modelName,
-                    Type = modelType
+                    Type = ModelType.Fbx
                 };
             }
-
-            return null;
         }
 
         public static bool IsModel(string path)

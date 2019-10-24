@@ -1,7 +1,25 @@
-﻿namespace Manager.Objects
+﻿using ModelImporter;
+
+namespace Manager.Objects
 {
     public static class ObjectModelFactory
     {
+        public static IObjectModel GetObject(string path)
+        {
+            ModelImporter.Model3D model3D = null;
+            ModelImport.ImportModel(path, out model3D, null);
+
+            if(model3D != null)
+            {
+                return new Model3D
+                { 
+                };
+
+            }
+
+            return null;
+        }
+
         public static IObjectModel GetObject(object value)
         {
             if (value == null)
