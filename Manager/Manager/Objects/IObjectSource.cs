@@ -12,6 +12,6 @@ namespace Manager.Objects
 
         List<IObjectModel> GetObjects();
 
-        void AddObject(IObjectModel objectModel);
+        void AddObject(string FilePath, IObjectModel objectModel);
     }
 }

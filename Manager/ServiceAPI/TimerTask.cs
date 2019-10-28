@@ -31,6 +31,9 @@ namespace ServiceAPI
 
         public void Run()
         {
+            if ((DateTime.Now - lastInvokedTime).Milliseconds >= Interval)
+                return;
+
             task?.Invoke();
             lastInvokedTime = DateTime.Now;
         }

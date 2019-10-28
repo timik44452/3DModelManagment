@@ -52,13 +52,17 @@ namespace Manager.Pages.ViewModels
             addDataSourceCommand.RegisterCallback(AddDataSource);
 
             AddDataSourceCommand = addDataSourceCommand;
-
-            IObjectSource testServer0 = new LocalServer("Fictive server 0", "127.0.0.1:67", null);
-            ObjectSources.Add(testServer0);
         }
 
         public override void OnDropDown(DragEventArgs e)
         {
+            if (ObjectSources.Count == 0)
+            {
+                return;
+            }
+
+            e.Effects = DragDropEffects.Copy;
+
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
 
             AddModelDialog modelDialog = new AddModelDialog(ObjectSources, files);

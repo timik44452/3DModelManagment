@@ -27,7 +27,10 @@ namespace Manager
 
         private void Accept(object sender, RoutedEventArgs e)
         {
-            source = new LocalServer(NameBox.Text,SourceBox.Text, logger);
+            if (System.IO.Directory.Exists(SourceBox.Text))
+                source = new Folder(NameBox.Text, SourceBox.Text, logger);
+            else
+                source = new LocalServer(NameBox.Text, SourceBox.Text, logger);
 
             DialogResult = true;
             Close();

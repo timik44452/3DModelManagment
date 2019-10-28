@@ -32,7 +32,7 @@
 
                         <Label Grid.Column="1" VerticalContentAlignment="Center" Content="Path"/>
                         <TextBox Grid.Column="2" VerticalContentAlignment="Center" Text="{Binding Path='Path', UpdateSourceTrigger=PropertyChanged}"/>
-                        <ComboBox Grid.Column="4" ItemsSource="{Binding Sources}" SelectedIndex="0">
+                        <ComboBox Grid.Column="4" ItemsSource="{Binding Sources}" SelectedItem="{Binding CurrentSource, UpdateSourceTrigger=PropertyChanged}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Name}"/>

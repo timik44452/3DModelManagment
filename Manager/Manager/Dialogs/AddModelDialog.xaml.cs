@@ -25,7 +25,7 @@ namespace Manager
         {
             foreach(var item in viewModel.SourceItems)
             {
-                item.CurrentSource.AddObject(ObjectModelFactory.GetObject(item.Path));
+                item.CurrentSource.AddObject(item.Path, ObjectModelFactory.GetObject(item.Path));
             }
 
             DialogResult = true;

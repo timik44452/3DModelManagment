@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 
 namespace ServiceAPI
 {
@@ -11,26 +12,38 @@ namespace ServiceAPI
         {
             if (timer == null)
             {
-                timer = new System.Timers.Timer(task.Interval);
+                timer = new System.Timers.Timer();
+                timer.Elapsed += (s, e) => Tick();
             }
 
-            timer.Elapsed += (s, e) =>
-              {
-                  task.Run();
+            if (tasks == null)
+            {
+                tasks = new List<TimerTask>();
+            }
 
-                  if (!task.IsLoop)
-                  {
-                      timer.Stop();
-                  }
-              };
-
-            timer.Start();
+            tasks.Add(task);
+            ReconfigurateTimer();
         }
 
         public static void StopTimer()
         {
             timer.Stop();
             tasks.Clear();
+        }
+
+        private static void ReconfigurateTimer()
+        {
+            timer.Stop();
+            timer.Interval = tasks.Min(x => x.Interval);
+            timer.Start();
+        }
+
+        private static void Tick()
+        {
+            foreach(TimerTask task in tasks)
+            {
+                task.Run();
+            }
         }
     }
 }

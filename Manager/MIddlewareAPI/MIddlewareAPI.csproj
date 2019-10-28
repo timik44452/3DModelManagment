@@ -41,9 +41,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileStreamer.cs" />
-    <Compile Include="PackageHeader.cs" />
+    <Compile Include="CommandSystem\BaseCommands\LogCommand.cs" />
+    <Compile Include="CommandSystem\BaseCommands\RecieveFileCommand.cs" />
+    <Compile Include="BaseRequestWorkers\BaseRequestWorkers.cs" />
+    <Compile Include="CommandSystem\BaseCommands\SendFileCommand.cs" />
+    <Compile Include="CommandSystem\BasePipelines\CommandResponsePipeline.cs" />
+    <Compile Include="CommandSystem\BasePipelines\OnlyCommandPipeline.cs" />
+    <Compile Include="CommandSystem\ICommand.cs" />
+    <Compile Include="CommandSystem\IRequestWorkPipeline.cs" />
+    <Compile Include="Core\IResponseBuilder.cs" />
+    <Compile Include="Core\RequestWorkerSet.cs" />
+    <Compile Include="NetworkCommunicator.cs" />
+    <Compile Include="Network\Client.cs" />
+    <Compile Include="Network\INetworkUnit.cs" />
+    <Compile Include="Network\Server.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\Request.cs" />
+    <Compile Include="Service\RequestParser.cs" />
+    <Compile Include="Core\RequestWorker.cs" />
+    <Compile Include="Core\WorkCore.cs" />
+    <Compile Include="CommandSystem\DataContainer.cs" />
+    <Compile Include="Service\RequestWorkPipelineValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ServiceAPI\ServiceAPI.csproj">
@@ -51,5 +69,6 @@
       <Name>ServiceAPI</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

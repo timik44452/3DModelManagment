@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Windows.Input;
 using Manager.Objects;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
@@ -8,6 +9,12 @@ namespace Manager.Dialogs
     public class AddDatasourceViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public ICommand AcceptCommand
+        {
+            get;
+            set;
+        }
 
         public ObservableCollection<ObjectSourceItem> SourceItems
         {
@@ -19,7 +26,6 @@ namespace Manager.Dialogs
             get;
             set;
         }
-
 
         public AddDatasourceViewModel(ObservableCollection<IObjectSource> objectSources, string[] files)
         {

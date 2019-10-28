@@ -84,9 +84,10 @@
       <DependentUpon>RoundedTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\ObjectSourceItem.cs" />
+    <Compile Include="Objects\ObjectSources\Folder.cs" />
     <Compile Include="Objects\IObjectModel.cs" />
     <Compile Include="Objects\IObjectSource.cs" />
-    <Compile Include="Objects\LocalServer.cs" />
+    <Compile Include="Objects\ObjectSources\LocalServer.cs" />
     <Compile Include="Objects\Model3D.cs" />
     <Compile Include="Objects\ObjectHistory.cs" />
     <Compile Include="Objects\ObjectModelFactory.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Security\Authorization.cs" />
     <Compile Include="Security\UserHash.cs" />
     <Compile Include="Service\ManagerLogger.cs" />
+    <Compile Include="Service\Notifications.cs" />
     <Compile Include="Service\RelayCommand.cs" />
     <Page Include="Dialogs\AddDatasourceDialog.xaml">
       <SubType>Designer</SubType>
@@ -201,6 +203,10 @@
       <Project>{142079cc-d623-4064-90aa-8757420ac016}</Project>
       <Name>ModelImporter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Notification\Notification.csproj">
+      <Project>{e3bcad9d-6373-488f-a08e-33bfa99d24bb}</Project>
+      <Name>Notification</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceAPI\ServiceAPI.csproj">
       <Project>{fb6e6dc6-756a-458f-9880-3a113075021a}</Project>
       <Name>ServiceAPI</Name>
@@ -221,6 +227,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\disconnectedServer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\deletedFolder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

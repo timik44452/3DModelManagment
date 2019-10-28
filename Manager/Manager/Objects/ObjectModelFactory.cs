@@ -13,6 +13,8 @@ namespace Manager.Objects
             {
                 return new Model3D
                 { 
+                    Name = model3D.Name,
+                    Type = ObjectType.FBX
                 };
 
             }
@@ -35,7 +37,7 @@ namespace Manager.Objects
                 {
                     Name = model3D.Name,
                     Type = ObjectType.FBX,
-                    State = ObjectState.Uploaded,
+                    State = ObjectState.Uploading,
                 };
             }
 

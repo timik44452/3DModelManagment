@@ -10,6 +10,11 @@ namespace Manager
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public bool IsAvailable
+        {
+            get => isAvailable;
+        }
+
         public string Name
         {
             get => name;
@@ -18,11 +23,6 @@ namespace Manager
                 name = value;
                 PropertyChangedInvoke(nameof(Name));
             }
-        }
-
-        public bool IsAvailable
-        {
-            get => fileSender != null && fileSender.IsConnected;
         }
 
         public string Source
@@ -54,8 +54,9 @@ namespace Manager
         private string name;
         private string source;
         private string itemIcon;
+        private bool isAvailable;
 
-        private FileStreamer fileSender;
+        private NetworkCommunicator networkCommunicator;
         private List<IObjectModel> objects = new List<IObjectModel>();
 
         public LocalServer(string name, string source, ILogger logger)
@@ -63,14 +64,16 @@ namespace Manager
             this.name = name;
             this.source = source;
 
+
             ItemIcon = DISCONNECTED_SERVER_ICON;
-            fileSender = new FileStreamer(logger);
+            networkCommunicator = new NetworkCommunicator(logger, null);
 
             Timer.RegisterNewAction(new TimerTask(1500, CheckConnection, loop: true));
         }
 
-        public void AddObject(IObjectModel objectModel)
+        public void AddObject(string FilePath, IObjectModel objectModel)
         {
+            networkCommunicator.Send(this, $"log:{objectModel.Name}");
             objects.Add(objectModel);
         }
 
@@ -87,19 +90,20 @@ namespace Manager
 
         private void CheckConnection()
         {
-            if (fileSender == null)
+            if (networkCommunicator == null)
             {
                 return;
             }
 
-            if (!fileSender.IsConnected)
+            if (!networkCommunicator.IsConnected)
             {
-                fileSender.Connect("127.0.0.1", 67);
+                networkCommunicator.Connect("127.0.0.1", 67);
+            }
 
-                if (fileSender.IsConnected)
-                {
-                    PropertyChangedInvoke(nameof(IsAvailable));
-                }
+            if (isAvailable != networkCommunicator.IsConnected)
+            {
+                isAvailable = networkCommunicator.IsConnected;
+                PropertyChangedInvoke(nameof(IsAvailable));
             }
 
             ItemIcon = IsAvailable ? CONNECTED_SERVER_ICON : DISCONNECTED_SERVER_ICON;

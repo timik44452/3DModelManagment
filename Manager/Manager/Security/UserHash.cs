@@ -19,12 +19,8 @@
 
         public override bool Equals(object obj)
         {
-            if (obj is UserHash)
-            {
-                return ((UserHash)obj).hash == hash;
-            }
-
-            return false;
+            return obj is UserHash &&
+                ((UserHash)obj).hash == hash;
         }
 
         public override int GetHashCode()

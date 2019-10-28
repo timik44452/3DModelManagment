@@ -6,7 +6,7 @@ namespace Manager.Objects
     {
         public static ObjectState Free { get => new ObjectState("Free"); }
         public static ObjectState Busy { get => new ObjectState("Busy"); }
-        public static ObjectState Uploaded { get => new ObjectState("Uploaded"); }
+        public static ObjectState Uploading { get => new ObjectState("Uploaded"); }
         public static ObjectState Downloaded { get => new ObjectState("Downloaded"); }
 
         private string state;
