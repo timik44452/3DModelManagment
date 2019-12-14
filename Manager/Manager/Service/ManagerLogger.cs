@@ -1,5 +1,5 @@
-﻿using System.Windows.Controls;
-using ServiceAPI;
+﻿using ServiceAPI.Log;
+using System.Windows.Controls;
 
 namespace Manager.Service
 {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 
 namespace MiddlewareAPI.Core
 {
@@ -11,10 +12,29 @@ namespace MiddlewareAPI.Core
             workers = new List<RequestWorker>();
         }
 
-
         public void AddRequestWorkers(params RequestWorker[] workers)
         {
-            this.workers.AddRange(workers);
+            foreach (RequestWorker worker in workers)
+            {
+                int Index = this.workers.FindIndex(x => x.Name == worker.Name);
+
+                if (Index == -1)
+                    this.workers.Add(worker);
+                else
+                    this.workers[Index] = worker;
+            }
+        }
+
+        public static RequestWorkerSet Combine(params RequestWorkerSet[] workerSets)
+        {
+            RequestWorkerSet requestWorkerSet = new RequestWorkerSet();
+
+            foreach (RequestWorkerSet workerSet in workerSets)
+            {
+                requestWorkerSet.AddRequestWorkers(workerSet.workers.ToArray());
+            }
+
+            return requestWorkerSet;
         }
 
         public RequestWorker GetWorker(string name)

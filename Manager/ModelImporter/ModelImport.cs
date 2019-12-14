@@ -4,26 +4,20 @@ namespace ModelImporter
 {
     public static class ModelImport
     {
-        public static void ImportModel(string path, out Model3D model3D, IModelParser parser)
+        public static void ImportModel(string path, out Model3D model3D)
         {
             model3D = null;
 
-            if (IsModel(path))
+            if (File.Exists(path) && ModelType.TryParse(path, out Type3D modelType))
             {
                 var modelName = Path.GetFileNameWithoutExtension(path);
-                var modelType = ModelType.Parse(path);
 
                 model3D = new Model3D()
                 {
                     Name = modelName,
-                    Type = ModelType.Fbx
+                    Type = modelType
                 };
             }
-        }
-
-        public static bool IsModel(string path)
-        {
-            return File.Exists(path) && ModelType.TryParse(path, out _);
         }
     }
 }

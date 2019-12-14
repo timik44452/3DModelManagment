@@ -1,4 +1,5 @@
-﻿using System.Windows.Media;
+﻿using ServiceAPI.Timers;
+using System.Windows.Media;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
@@ -30,6 +31,8 @@ namespace Notification
             visualContainer.Height = 100;
 
             VisualContainers.Add(visualContainer);
+            //VisualContainers.Remove(visualContainer);
+            Timer.RegisterNewAction(1500, () => VisualContainers.Remove(visualContainer));
         }
 
         public void PropertyChangeInvoke(string propertyName)

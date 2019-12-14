@@ -4,13 +4,16 @@ namespace Manager.Objects
 {
     public class ObjectType
     {
-        public static ObjectType FBX { get => new ObjectType("FBX"); }
-
         private string type;
 
         public ObjectType(string type)
         {
             this.type = type;
+        }
+
+        public ObjectType(object value)
+        {
+            type = value.ToString();
         }
 
         public override bool Equals(object obj)

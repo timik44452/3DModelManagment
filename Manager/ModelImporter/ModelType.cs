@@ -2,58 +2,31 @@
 {
     public enum Type3D
     {
+        Undefined,
         FBX,
         OBJ
     }
 
-    public class ModelType
+    public static class ModelType
     {
-        public static ModelType Fbx { get => new ModelType(Type3D.FBX); }
-        public static ModelType Obj { get => new ModelType(Type3D.OBJ); }
-
-        private Type3D type;
-
-        public ModelType(Type3D type)
+        public static bool TryParse(string modelName, out Type3D target)
         {
-            this.type = type;
-        }
+            target = Type3D.Undefined;
 
-        public static ModelType Parse(string path)
-        {
-            if (TryParse(path, out ModelType type))
-                return type;
+            modelName = modelName.ToLower();
 
-            return null;
-        }
-
-        public static bool TryParse(string modelName, out ModelType target)
-        {
-            target = null;
-
-            if (modelName.ToLower().Contains(".fbx"))
+            // TODO: Add more model types
+            if (modelName.Contains(".fbx"))
             {
-                target = Fbx;
-
-                return true;
+                target = Type3D.FBX;
             }
 
-            return false;
-        }
+            if (modelName.Contains(".obj"))
+            {
+                target = Type3D.OBJ;
+            }
 
-        public override string ToString()
-        {
-            return type.ToString();
-        }
-
-        public override bool Equals(object obj)
-        {
-            return obj is ModelType type &&
-                   this.type == type.type;
-        }
-
-        public override int GetHashCode()
-        {
-            return 34944597 + type.GetHashCode();
+            return target != Type3D.Undefined;
         }
     }
 }

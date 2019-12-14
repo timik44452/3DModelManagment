@@ -4,21 +4,9 @@ namespace ModelImporter
 {
     public static class ModelParserFactory
     {
-        public static IModelParser CreateParser(string path)
+        public static IModelParser CreateParser(Type3D type)
         {
-            if (ModelType.TryParse(path, out ModelType model))
-            {
-                return CreateParser(model);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public static IModelParser CreateParser(ModelType type)
-        {
-            if (type.Equals(ModelType.Fbx))
+            if (type == Type3D.FBX)
             {
                 return new FBXParser();
             }

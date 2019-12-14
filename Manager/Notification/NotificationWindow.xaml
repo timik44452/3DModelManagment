@@ -17,7 +17,7 @@
         <ItemsControl ItemsSource="{Binding VisualContainers}" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <local:NotificationControl Width="{Binding Width}" Height="{Binding Height}"/>
+                    <local:NotificationControl Margin="5" Width="{Binding Width}" Height="{Binding Height}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

@@ -1,4 +1,4 @@
-﻿using ServiceAPI;
+﻿using ServiceAPI.Log;
 
 namespace MiddlewareAPI.CommandSystem
 {

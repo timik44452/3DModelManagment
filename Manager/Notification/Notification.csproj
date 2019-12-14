@@ -106,5 +106,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceAPI\ServiceAPI.csproj">
+      <Project>{585a613d-c19d-44a7-919f-dc832ff797cf}</Project>
+      <Name>ServiceAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

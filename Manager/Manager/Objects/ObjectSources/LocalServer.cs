@@ -2,7 +2,8 @@
 using System.ComponentModel;
 using Manager.Objects;
 using MiddlewareAPI;
-using ServiceAPI;
+using ServiceAPI.Log;
+using ServiceAPI.Timers;
 
 namespace Manager
 {

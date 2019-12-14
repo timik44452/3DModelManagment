@@ -1,4 +1,4 @@
-﻿using ServiceAPI;
+﻿using ServiceAPI.Log;
 using System.Windows;
 using Manager.Objects;
 

@@ -53,9 +53,9 @@ namespace MiddlewareAPITests
         [TestMethod]
         public void CoreTest()
         {
-            ICommand commandExample = new SummCommand();
-            IResponseBuilder builderExample = new ResponseBuilder();
-            IRequestWorkPipeline pipelineExample = new CommandResponsePipeline();
+            var commandExample = new SummCommand();
+            var builderExample = new ResponseBuilder();
+            var pipelineExample = new CommandResponsePipeline();
 
             RequestWorker workerExample = new RequestWorker("summ", pipelineExample, commandExample, builderExample);
 

@@ -37,8 +37,6 @@ namespace Manager
         {
             InitPages();
             InitCommands();
-
-            Service.Notifications.Show("Hello", "Its work");
         }
 
         public void PropertyChange(string propertyName)

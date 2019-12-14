@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -53,9 +54,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -208,7 +209,7 @@
       <Name>Notification</Name>
     </ProjectReference>
     <ProjectReference Include="..\ServiceAPI\ServiceAPI.csproj">
-      <Project>{fb6e6dc6-756a-458f-9880-3a113075021a}</Project>
+      <Project>{585a613d-c19d-44a7-919f-dc832ff797cf}</Project>
       <Name>ServiceAPI</Name>
     </ProjectReference>
     <ProjectReference Include="..\UpdateService\UpdateService.csproj">

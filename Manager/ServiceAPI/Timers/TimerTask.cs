@@ -1,13 +1,21 @@
 ﻿using System;
 
-namespace ServiceAPI
+namespace ServiceAPI.Timers
 {
-    public struct TimerTask
+    public struct TimerTask : ITimerTask
     {
         public readonly string Name;
 
-        public int Interval;
-        public bool IsLoop;
+        public int Interval
+        {
+            get;
+            set;
+        }
+        public bool Looped
+        {
+            get;
+            set;
+        }
 
         public DateTime InvokedTime
         {
@@ -21,7 +29,7 @@ namespace ServiceAPI
         public TimerTask(int interval, Action task, string name = "none", bool loop = false)
         {
             Name = name;
-            IsLoop = loop;
+            Looped = loop;
             Interval = interval;
 
             lastInvokedTime = DateTime.Now;
@@ -29,11 +37,13 @@ namespace ServiceAPI
             this.task = task;
         }
 
+        public bool CanRun()
+        {
+            return (DateTime.Now - lastInvokedTime).TotalMilliseconds >= Interval;
+        }
+
         public void Run()
         {
-            if ((DateTime.Now - lastInvokedTime).Milliseconds >= Interval)
-                return;
-
             task?.Invoke();
             lastInvokedTime = DateTime.Now;
         }

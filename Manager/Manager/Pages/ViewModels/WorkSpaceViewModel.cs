@@ -46,6 +46,17 @@ namespace Manager.Pages.ViewModels
                 PropertyChange(nameof(Models));
             };
 
+            Folder folder = new Folder("example", @"C:\dir", null);
+
+            for (int i = 0; i < 1000; i++)
+            {
+                string fictivePath = $"exmple {i}.fbx";
+                
+                folder.AddObject(fictivePath, ObjectModelFactory.GetObject(fictivePath));
+            }
+
+            ObjectSources.Add(folder);
+
             RelayCommand<object> addDataSourceCommand = new RelayCommand<object>();
             RelayCommand<IObjectSource> selectObjectSourceCommand = new RelayCommand<IObjectSource>();
 

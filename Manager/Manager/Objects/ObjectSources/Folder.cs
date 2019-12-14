@@ -1,9 +1,10 @@
 ﻿using System.IO;
-using ServiceAPI;
-using System.Security;
+using ServiceAPI.Log;
+using ServiceAPI.Timers;
 using System.ComponentModel;
-using System.Security.AccessControl;
 using System.Collections.Generic;
+using System.Security.AccessControl;
+
 
 namespace Manager.Objects
 {
@@ -11,10 +12,7 @@ namespace Manager.Objects
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public bool IsAvailable
-        {
-            get => isAvailable;
-        }
+        public bool IsAvailable { get; private set; }
 
         public string Name
         {
@@ -55,8 +53,6 @@ namespace Manager.Objects
         private string name;
         private string source;
         private string itemIcon;
-        private bool isAvailable;
-
         private List<IObjectModel> objects = new List<IObjectModel>();
 
         public Folder(string name, string source, ILogger logger)
@@ -89,9 +85,9 @@ namespace Manager.Objects
         {
             bool exists = IsAccessDirectory(source);
 
-            if (isAvailable != exists)
+            if (IsAvailable != exists)
             {
-                isAvailable = exists;
+                IsAvailable = exists;
                 PropertyChangedInvoke(nameof(IsAvailable));
             }
 

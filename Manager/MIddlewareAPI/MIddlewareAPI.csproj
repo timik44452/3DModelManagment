@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="CommandSystem\BaseCommands\LogCommand.cs" />
     <Compile Include="CommandSystem\BaseCommands\RecieveFileCommand.cs" />
-    <Compile Include="BaseRequestWorkers\BaseRequestWorkers.cs" />
+    <Compile Include="BaseRequestWorkers.cs" />
     <Compile Include="CommandSystem\BaseCommands\SendFileCommand.cs" />
     <Compile Include="CommandSystem\BasePipelines\CommandResponsePipeline.cs" />
     <Compile Include="CommandSystem\BasePipelines\OnlyCommandPipeline.cs" />
@@ -65,10 +65,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ServiceAPI\ServiceAPI.csproj">
-      <Project>{fb6e6dc6-756a-458f-9880-3a113075021a}</Project>
+      <Project>{585a613d-c19d-44a7-919f-dc832ff797cf}</Project>
       <Name>ServiceAPI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
